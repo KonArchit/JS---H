@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: #414141; color:aliceblue">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" height="100px" id="house" src="https://images.pexels.com/photos/20035207/pexels-photo-20035207/free-photo-of-red-house-by-the-sea.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="house"></li>
+            <li><img width="200px" height="150px" id="girl" src="https://images.pexels.com/photos/18369349/pexels-photo-18369349/free-photo-of-tet-holiday-in-vietnam.png?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="girl"></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/357159/pexels-photo-357159.jpeg?auto=compress&cs=tinysrgb&w=600" alt="owl"></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=600" alt="river"></li>
+            <li><img width="200px" id="army" src="https://images.pexels.com/photos/163347/war-desert-guns-gunshow-163347.jpeg?auto=compress&cs=tinysrgb&w=600" alt="army"></li>
+            <li><a style="color:aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    //document.getElementById('owl').onclick = function(){
+    //  alert('owl clicked')
+    //}
+    
+    // More Optimised way to add events:
+    // attachEvent 
+    // JQuery - on
+    //document.getElementById('owl').addEventListener('click', function(){
+    //    alert('owl clicked again')
+    //}, false)
+
+    //document.getElementById('owl').addEventListener('click', function(e){
+    //    console.log(e)
+    //}, false)
+
+    //Homework:
+    // type, timestamp, preventDefault
+    // target, toElement, srcElement, currentTarget,
+    // clientX , clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode
+
+    // Event propagation: 
+    // Bubbling up -> false = andar se bhar ki taraf
+    // capturing mode -> true = bhar se andar ki taraf
+
+    //document.getElementById('images').addEventListener('click', function(e){
+    //    console.log('clicked inside the ul')
+    //}, false)
+
+    //document.getElementById('owl').addEventListener('click', function(e){
+    //    console.log('owl clicked')
+    //    e.stopPropagation()
+    //}, false)
+
+    //document.getElementById('google').addEventListener('click', function(e){
+    //    e.preventDefault()
+    //    e.stopPropagation()
+    //    console.log('google clicked')
+    //}, false)
+
+    // How to remove an image:
+    //document.querySelector('#images').addEventListener('click', function(e){
+    //    console.log(e.target.parentNode)
+    //    let removeIt = e.target.parentNode
+    //    removeIt.remove() 
+    //    // OR   
+    //    //removeIt.parentNode.removeChild(removeIt)
+    //}) // Images remove to ho rhi hae isme lekin sath mae saari LI images remove ho rhi hae
+
+    // Best way to remove selected image
+    // This method is known as EVENT SPIL OVER
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName)
+        if(e.target.tagName === 'IMG'){
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+            console.log(e.target.id)
+        }
+    })
+</script>
+</html>
